@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found · Under the Hood</title>
+<script>
+// GitHub Pages shows this page for any missing address, at any depth, so relative links
+// would break. Point every link at the site's root folder instead:
+// on github.io that is the repo folder (/<repo-name>/), and on a local server it is /.
+(function () {
+  var parts = location.pathname.split('/').filter(Boolean);
+  var root = /\.github\.io$/.test(location.hostname) && parts.length ? '/' + parts[0] + '/' : '/';
+  var b = document.createElement('base'); b.href = root; document.head.appendChild(b);
+  try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/home.css">
+</head>
+<body class="home-page">
+<main class="home">
+  <section class="lost">
+    <p class="eyebrow">404</p>
+    <h1>This page isn't here.</h1>
+    <p class="muted">The link may be old, or the address has a typo.</p>
+    <p><a class="btn primary" href="./">Back to all projects</a></p>
+  </section>
+</main>
+<script type="module">
+import { topbar } from './assets/stepper.js';
+document.body.prepend(topbar(null, './'));
+</script>
+</body>
+</html>
